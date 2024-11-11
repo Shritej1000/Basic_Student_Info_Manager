@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>View Student Information</h2>
+        
+        <!-- Flash message for user feedback -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
+        
+        <form action="/view_student" method="POST" class="form">
+            <div class="form-group">
+                <label for="prn">Enter PRN:</label>
+                <input type="text" name="prn" id="prn" required>
+            </div>
+            <button type="submit" class="btn">Search</button>
+        </form>
+        
+        {% if student %}
+            <div class="student-info">
+                <h3>Student Details</h3>
+                <p><strong>Name:</strong> {{ student['name'] }}</p>
+                <p><strong>Age:</strong> {{ student['age'] }}</p>
+                <p><strong>PRN:</strong> {{ student['prn'] }}</p>
+                <p><strong>Address:</strong> {{ student['address'] }}</p>
+                <p><strong>Department:</strong> {{ student['department'] }}</p>
+                <p><strong>Academic Year:</strong> {{ student['academic_year'] }}</p>
+            </div>
+        {% endif %}
+        
+        <a href="{{ url_for('index') }}" class="link">Add New Student</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+KIT_Student_App/
+│
+├── app.py               # Main Flask app
+├── templates/           # HTML files
+│   ├── index.html       # Form to add a student
+│   ├── view_student.html # Display student details
+│
+├── static/
+│   ├── css/
+│   │   └── styles.css   # CSS for styling
+│   └── js/
+│       └── script.js    # JS file for any frontend interactivity
+├── requirements.txt     # List of dependencies (Flask, Flask-MySQL, etc.)
+└── config.py            # Database configuration
